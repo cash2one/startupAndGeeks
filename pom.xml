@@ -1,0 +1,265 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.kawa.studio</groupId>
+  <artifactId>ShowCase</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <properties>
+  <shiro.version>1.2.3</shiro.version>
+  <spring-data-jpa.version>1.7.1.RELEASE</spring-data-jpa.version>
+  
+  <hibernate.version>4.3.7.Final</hibernate.version>
+  <hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
+  </properties>
+  
+  
+  <dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>4.1.6.RELEASE</version>
+    </dependency>
+    
+    <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-webmvc</artifactId>  
+            <version>4.1.6.RELEASE</version>  
+    </dependency>
+
+    <!-- PERSISTENCE begin -->
+	<!-- spring data access -->
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-jpa</artifactId>
+		<version>${spring-data-jpa.version}</version>
+	</dependency>
+	<!-- hibernate -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
+	<!-- PERSISTENCE end -->
+	
+	<!-- JSR303 BeanValidator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+		</dependency>
+    <!-- JSR303 BeanValidator end -->
+    
+    
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+		<scope>runtime</scope>
+	</dependency>
+<!-- for memcache client xmemcached use -->
+<dependency>
+	<groupId>com.googlecode.xmemcached</groupId>
+	<artifactId>xmemcached</artifactId>
+	<version>1.4.2</version>
+</dependency> 
+<!-- for memcache client xmemcached use --> 
+
+
+<!-- for memcache client spymemcached use -->
+<dependency>
+	<groupId>net.spy</groupId>
+	<artifactId>spymemcached</artifactId>
+	<version>2.11.7</version>
+</dependency>
+<!-- for memcache client spymemcached use -->
+
+<dependency>
+	<groupId>org.slf4j</groupId>
+	<artifactId>slf4j-nop</artifactId>
+	<version>1.7.12</version>
+</dependency>
+
+
+
+<dependency>
+	<groupId>org.apache.commons</groupId>
+	<artifactId>commons-lang3</artifactId>
+	<version>3.4</version>
+</dependency>
+<dependency>
+	<groupId>commons-beanutils</groupId>
+	<artifactId>commons-beanutils</artifactId>
+	<version>1.9.2</version>
+</dependency>
+<dependency>
+	<groupId>commons-pool</groupId>
+	<artifactId>commons-pool</artifactId>
+	<version>1.6</version>
+</dependency>
+
+<dependency>
+	<groupId>commons-io</groupId>
+	<artifactId>commons-io</artifactId>
+	<version>2.4</version>
+</dependency>
+<dependency>
+	<groupId>commons-codec</groupId>
+	<artifactId>commons-codec</artifactId>
+	<version>1.10</version>
+</dependency>
+
+<dependency>
+	<groupId>net.sf.dozer</groupId>
+	<artifactId>dozer</artifactId>
+	<version>5.5.1</version>
+</dependency>
+
+<dependency>
+	<groupId>com.fasterxml.jackson.core</groupId>
+	<artifactId>jackson-core</artifactId>
+	<version>2.5.3</version>
+</dependency>
+<dependency>
+	<groupId>com.fasterxml.jackson.core</groupId>
+	<artifactId>jackson-databind</artifactId>
+	<version>2.5.3</version>
+</dependency>
+<dependency>
+	<groupId>com.fasterxml.jackson.core</groupId>
+	<artifactId>jackson-annotations</artifactId>
+	<version>2.5.3</version>
+</dependency>
+<dependency>
+	<groupId>com.fasterxml.jackson.module</groupId>
+	<artifactId>jackson-module-jaxb-annotations</artifactId>
+	<version>2.5.3</version>
+</dependency>
+
+
+
+<!-- for redis client jedis use -->
+<dependency>
+	<groupId>redis.clients</groupId>
+	<artifactId>jedis</artifactId>
+	<version>2.5.2</version>
+</dependency>
+
+<!-- for redis client jedis use -->
+
+
+<dependency>
+	<groupId>org.apache.activemq</groupId>
+	<artifactId>activemq-all</artifactId>
+	<version>5.11.1</version>
+</dependency>
+
+<dependency>
+	<groupId>com.google.guava</groupId>
+	<artifactId>guava</artifactId>
+	<version>18.0</version>
+</dependency>
+
+
+	<!-- SECURITY begin -->
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+		<artifactId>shiro-spring</artifactId>
+		<version>${shiro.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+		<artifactId>shiro-ehcache</artifactId>
+		<version>${shiro.version}</version>
+	</dependency>
+	<!-- SECURITY end -->
+
+        <!-- TEST -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.12</version>
+	</dependency>
+	<dependency>
+		<groupId>org.assertj</groupId>
+		<artifactId>assertj-core</artifactId>
+		<version>3.0.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<version>4.1.6.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>org.mockito</groupId>
+		<artifactId>mockito-all</artifactId>
+		<version>1.8.4</version>
+	</dependency>
+	<dependency>
+			<groupId>com.lordofthejars</groupId>
+			<artifactId>nosqlunit-redis</artifactId>
+			<version>0.8.1</version>
+	</dependency>
+
+
+
+	<dependency>
+		<groupId>asm</groupId>
+		<artifactId>asm-all</artifactId>
+		<version>3.3.1</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.sun.tools.btrace</groupId>
+		<artifactId>btrace-client</artifactId>
+		<version>1.2.3</version>
+	</dependency>
+
+	<dependency>
+		<groupId>cglib</groupId>
+		<artifactId>cglib</artifactId>
+		<version>3.1</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.javassist</groupId>
+		<artifactId>javassist</artifactId>
+		<version>3.19.0-GA</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-lang</groupId>
+		<artifactId>commons-lang</artifactId>
+		<version>2.6</version>
+	</dependency>
+	
+	<!-- apache http client -->
+<dependency>
+	<groupId>org.apache.httpcomponents</groupId>
+	<artifactId>httpclient</artifactId>
+	<version>4.5</version>
+</dependency>
+
+<dependency>
+	<groupId>net.sf.json-lib</groupId>
+	<artifactId>json-lib</artifactId>
+	<version>2.4</version>
+	<classifier>jdk15</classifier>
+</dependency>
+
+
+</dependencies>
+<build>
+<plugins>  
+    <plugin>  
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-compiler-plugin</artifactId>  
+        <version>2.3.2</version>  
+        <configuration>  
+            <source>1.8</source>  
+            <target>1.8</target>  
+        </configuration>  
+    </plugin>  
+</plugins>
+</build>
+</project>
