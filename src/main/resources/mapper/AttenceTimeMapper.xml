@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmcc.edu.dao.AttenceTimeMapper" >
+  <resultMap id="BaseResultMap" type="com.cmcc.edu.entity.AttenceTime" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="arrivetime" property="arrivetime" jdbcType="TIME" />
+    <result column="leavetime" property="leavetime" jdbcType="TIME" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="grade_id" property="gradeId" jdbcType="INTEGER" />
+    <result column="school_id" property="schoolId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, arrivetime, leavetime, class_id, grade_id, school_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_attencetime
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sch_attencetime
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cmcc.edu.entity.AttenceTime" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_attencetime (arrivetime, leavetime, class_id, 
+      grade_id, school_id)
+    values (#{arrivetime,jdbcType=TIME}, #{leavetime,jdbcType=TIME}, #{classId,jdbcType=INTEGER}, 
+      #{gradeId,jdbcType=INTEGER}, #{schoolId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmcc.edu.entity.AttenceTime" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_attencetime
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="arrivetime != null" >
+        arrivetime,
+      </if>
+      <if test="leavetime != null" >
+        leavetime,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="gradeId != null" >
+        grade_id,
+      </if>
+      <if test="schoolId != null" >
+        school_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="arrivetime != null" >
+        #{arrivetime,jdbcType=TIME},
+      </if>
+      <if test="leavetime != null" >
+        #{leavetime,jdbcType=TIME},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="gradeId != null" >
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="schoolId != null" >
+        #{schoolId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmcc.edu.entity.AttenceTime" >
+    update sch_attencetime
+    <set >
+      <if test="arrivetime != null" >
+        arrivetime = #{arrivetime,jdbcType=TIME},
+      </if>
+      <if test="leavetime != null" >
+        leavetime = #{leavetime,jdbcType=TIME},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="gradeId != null" >
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="schoolId != null" >
+        school_id = #{schoolId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmcc.edu.entity.AttenceTime" >
+    update sch_attencetime
+    set arrivetime = #{arrivetime,jdbcType=TIME},
+      leavetime = #{leavetime,jdbcType=TIME},
+      class_id = #{classId,jdbcType=INTEGER},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      school_id = #{schoolId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

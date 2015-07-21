@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmcc.edu.dao.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.cmcc.edu.entity.Student" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="grade_id" property="gradeId" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="stuno" property="stuno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, class_id, grade_id, sex, birthday, mobile, nickname, stuno
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_student
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sch_student
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cmcc.edu.entity.Student" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_student (name, class_id, grade_id, 
+      sex, birthday, mobile, 
+      nickname, stuno)
+    values (#{name,jdbcType=VARCHAR}, #{classId,jdbcType=INTEGER}, #{gradeId,jdbcType=INTEGER}, 
+      #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{mobile,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{stuno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmcc.edu.entity.Student" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="gradeId != null" >
+        grade_id,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="stuno != null" >
+        stuno,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="gradeId != null" >
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuno != null" >
+        #{stuno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmcc.edu.entity.Student" >
+    update sch_student
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="gradeId != null" >
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuno != null" >
+        stuno = #{stuno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmcc.edu.entity.Student" >
+    update sch_student
+    set name = #{name,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=INTEGER},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      stuno = #{stuno,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+   <select id="findStudentById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_student
+    where 1=1
+      <if test="stuId != null" >
+      and id in ( ${stuId} )
+      </if>
+      
+  </select>
+  
+  <select id="findStudentByClassId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_student
+    where 1=1 and class_id = #{classId,jdbcType=INTEGER}
+      
+  </select>
+  
+  <select id="findStuByClassIdAndGradeId" resultMap="BaseResultMap" parameterType="com.cmcc.edu.entity.Student" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_student
+    where 1=1
+      <if test="classId != null" >
+      and class_id = #{classId,jdbcType=INTEGER}
+      </if>
+      <if test="gradeId != null" >
+      and grade_id = #{gradeId,jdbcType=INTEGER}
+      </if>
+      
+  </select>
+  
+  <select id="findStuTreeBySchoolId" resultType="com.cmcc.edu.entity.Student" parameterType="java.lang.Long" >
+    select * from v_stu
+	where schoolId=#{schoolId,jdbcType=BIGINT} and classId is not null and stuId is not null
+	order by schoolId,gradeId,classId,stuId
+      
+  </select>
+  
+  <select id="findStuList" resultType="com.cmcc.edu.entity.Student" parameterType="com.cmcc.edu.entity.Student" >
+    select * from v_stu
+	where 1=1
+	<if test="schoolId != null" >
+      and schoolId=#{schoolId,jdbcType=BIGINT}
+    </if>
+	<if test="classId != null" >
+      and classId = #{classId,jdbcType=INTEGER}
+    </if>
+	<if test="stuname != null" >
+	  and stuname like concat('%',#{stuname,jdbcType=VARCHAR},'%')  
+    </if>
+    <if test="mobile != null" >
+	  and mobile like concat('%',#{mobile,jdbcType=VARCHAR},'%')  
+    </if>
+	order by schoolId,gradeId,classId,stuId
+      
+  </select>
+  
+  <select id="findClassBySchoolId" resultType="com.cmcc.edu.entity.Student" parameterType="java.lang.Long" >
+    select  schoolId, schname,gradeId, graname, classId, classname
+	 from v_stu
+	where schoolId=#{schoolId,jdbcType=BIGINT} and classId is not null
+	order by schoolId,gradeId,classId
+      
+  </select>
+  
+  <select id="selectStudentList" resultMap="BaseResultMap" parameterType="com.cmcc.edu.entity.Student" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_student
+    where 1=1
+       <if test="classId != null" >
+        class_id = #{classId,jdbcType=INTEGER}
+      </if>
+      <if test="classid != null" >
+       and name like concat('%',#{name,jdbcType=VARCHAR},'%')   
+      </if>
+  </select>
+</mapper>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmcc.edu.dao.SupplyMapper" >
+  <resultMap id="BaseResultMap" type="com.cmcc.edu.entity.Supply" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="master" property="master" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="supplytype" property="supplytype" jdbcType="BIGINT" />
+    <result column="updatename" property="updatename" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, master, phone, address, parent_id, supplytype, updatename, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+   select a.*,b.type from sys_supply a  
+    left join sys_supplytype b on a.supplytype=b.id
+    where a.id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_supply
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cmcc.edu.entity.Supply" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_supply (name, master, phone, 
+      address, parent_id, supplytype, 
+      updatename, update_time)
+    values (#{name,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT}, #{supplytype,jdbcType=BIGINT}, 
+      #{updatename,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmcc.edu.entity.Supply" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_supply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="master != null" >
+        master,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="supplytype != null" >
+        supplytype,
+      </if>
+      <if test="updatename != null" >
+        updatename,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="master != null" >
+        #{master,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="supplytype != null" >
+        #{supplytype,jdbcType=BIGINT},
+      </if>
+      <if test="updatename != null" >
+        #{updatename,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmcc.edu.entity.Supply" >
+    update sys_supply
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="master != null" >
+        master = #{master,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="supplytype != null" >
+        supplytype = #{supplytype,jdbcType=BIGINT},
+      </if>
+      <if test="updatename != null" >
+        updatename = #{updatename,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmcc.edu.entity.Supply" >
+    update sys_supply
+    set name = #{name,jdbcType=VARCHAR},
+      master = #{master,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      supplytype = #{supplytype,jdbcType=BIGINT},
+      updatename = #{updatename,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+  <select id="findSupplyList" resultType="com.cmcc.edu.entity.Supply" parameterType="com.cmcc.edu.entity.Supply" >
+    select a.id,a.phone,a.name,a.master,a.address,a.updatename,a.update_time updateTime,b.name suptypeName from sys_supply a  
+    left join sys_supplytype b on a.supplytype=b.id
+    where a.parent_id is not null
+	
+	
+      
+  </select>
+  
+  <select id="findParentSupply" resultType="com.cmcc.edu.entity.Supply" parameterType="com.cmcc.edu.entity.Supply">
+    select a.*,b.type from sys_supply a  
+     join sys_supplytype b on a.supplytype=b.id and b.type!=8
+     <if test="supplytype != null and supplytype !=-1" >
+       and a.id != #{supplytype,jdbcType=BIGINT}
+      </if>
+union select a.*,0 type  from sys_supply a where a.supplytype is null
+	
+      
+  </select>
+  
+  
+</mapper>

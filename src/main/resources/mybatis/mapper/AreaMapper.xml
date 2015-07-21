@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmcc.edu.dao.AreaMapper" >
+  <resultMap id="BaseResultMap" type="com.cmcc.edu.entity.Area" >
+    <id column="CODE" property="code" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="area_name" property="areaName" jdbcType="VARCHAR" />
+    <result column="parent_code" property="parentCode" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CODE, id, area_name, parent_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.cmcc.edu.entity.AreaKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_area
+    where CODE = #{code,jdbcType=INTEGER}
+      and id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.cmcc.edu.entity.AreaKey" >
+    delete from sys_area
+    where CODE = #{code,jdbcType=INTEGER}
+      and id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmcc.edu.entity.Area" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_area (CODE, id, area_name, 
+      parent_code)
+    values (#{code,jdbcType=INTEGER}, #{id,jdbcType=INTEGER}, #{areaName,jdbcType=VARCHAR}, 
+      #{parentCode,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmcc.edu.entity.Area" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        CODE,
+      </if>
+      id,
+      <if test="areaName != null" >
+        area_name,
+      </if>
+      <if test="parentCode != null" >
+        parent_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=INTEGER},
+      </if>
+      #{id,jdbcType=INTEGER},
+      <if test="areaName != null" >
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null" >
+        #{parentCode,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmcc.edu.entity.Area" >
+    update sys_area
+    <set >
+      <if test="areaName != null" >
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null" >
+        parent_code = #{parentCode,jdbcType=INTEGER},
+      </if>
+    </set>
+    where CODE = #{code,jdbcType=INTEGER}
+      and id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmcc.edu.entity.Area" >
+    update sys_area
+    set area_name = #{areaName,jdbcType=VARCHAR},
+      parent_code = #{parentCode,jdbcType=INTEGER}
+    where CODE = #{code,jdbcType=INTEGER}
+      and id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="findProvince" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from sys_area
+	    where parent_code=0
+  	</select>
+  	<select id='getCitysByProvinceId' parameterType='java.lang.Integer' resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from sys_area
+	    where parent_code=#{provinceCode} 
+    </select>
+    
+    <select id='getAreasByCityId' parameterType='java.lang.Integer' resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from sys_area
+	    where parent_code=#{cityCode} 
+    </select>
+</mapper>

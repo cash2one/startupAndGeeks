@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmcc.edu.dao.UserGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.cmcc.edu.entity.UserGroup" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="stu_id" property="stuId" jdbcType="VARCHAR" />
+    <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+    <result column="createid" property="createid" jdbcType="BIGINT" />
+    <result column="creatdate" property="creatdate" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, stu_id, teacher_id, createid, creatdate, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_usergroup
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sch_usergroup
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cmcc.edu.entity.UserGroup" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_usergroup (name, stu_id, teacher_id, 
+      createid, creatdate, type
+      )
+    values (#{name,jdbcType=VARCHAR}, #{stuId,jdbcType=VARCHAR}, #{teacherId,jdbcType=VARCHAR}, 
+      #{createid,jdbcType=BIGINT}, #{creatdate,jdbcType=TIMESTAMP}, #{type,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmcc.edu.entity.UserGroup" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_usergroup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="stuId != null" >
+        stu_id,
+      </if>
+      <if test="teacherId != null" >
+        teacher_id,
+      </if>
+      <if test="createid != null" >
+        createid,
+      </if>
+      <if test="creatdate != null" >
+        creatdate,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="stuId != null" >
+        #{stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="createid != null" >
+        #{createid,jdbcType=BIGINT},
+      </if>
+      <if test="creatdate != null" >
+        #{creatdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmcc.edu.entity.UserGroup" >
+    update sch_usergroup
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="stuId != null" >
+        stu_id = #{stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null" >
+        teacher_id = #{teacherId,jdbcType=VARCHAR},
+      </if>
+      <if test="createid != null" >
+        createid = #{createid,jdbcType=BIGINT},
+      </if>
+      <if test="creatdate != null" >
+        creatdate = #{creatdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmcc.edu.entity.UserGroup" >
+    update sch_usergroup
+    set name = #{name,jdbcType=VARCHAR},
+      stu_id = #{stuId,jdbcType=VARCHAR},
+      teacher_id = #{teacherId,jdbcType=VARCHAR},
+      createid = #{createid,jdbcType=BIGINT},
+      creatdate = #{creatdate,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="findUserGroupList" resultType="com.cmcc.edu.entity.UserGroup" parameterType="com.cmcc.edu.entity.UserGroup" >
+    select 
+    a.*,b.username createName
+    from sch_usergroup a join login_user b on a.createid=b.id and a.type=b.type
+    where a.createid = #{createid,jdbcType=BIGINT} and a.type = #{type}
+      <if test="name != null and name != '' and name != 'null' " >
+       and a.name like concat('%',#{name,jdbcType=VARCHAR},'%')   
+      </if>
+  </select>
+  
+  <select id="findOne" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from sch_usergroup
+	    where id = #{id,jdbcType=BIGINT}
+  	</select>
+  	
+  	<select id="findStuAndTeaByID" parameterType="com.cmcc.edu.entity.UserGroup" resultType="com.cmcc.edu.entity.UserGroup">
+  	  <if test="stuId != null and stuId !='null' and  stuId !='' and teacherId !=null and teacherId !='' and teacherId !='null' " >
+          	SELECT id userid,username,mobile,'teacher' userType,type  from sys_teacher  
+	        where id in( ${teacherId} )
+      union SELECT id userid,name username,mobile,'student' userType,null type from sch_student
+            where id in( ${stuId} )
+      </if>
+      
+      <if test="stuId != null and stuId !='null' and  stuId !='' and ( teacherId ==null or teacherId =='' or teacherId =='null' ) " >
+       SELECT id userid, name username,mobile,'student' userType,type from sch_student
+            where id in( ${stuId} )
+      </if>
+      
+      <if test="(stuId == null or stuId =='null' or  stuId =='') and  teacherId !=null and teacherId !='' and teacherId !='null' " >
+       SELECT id userid,username,mobile,'teacher' userType,null type from sys_teacher  
+	        where id in( ${teacherId} )
+      </if>
+  	</select>
+  	
+  	<select id="findUserGroupByTeaId" resultMap="BaseResultMap" parameterType="com.cmcc.edu.entity.UserGroup" >
+    select 
+    a.*
+    from sch_usergroup a join login_user b on a.createid=b.id and a.type=b.type
+    where 
+      a.createid = #{createid,jdbcType=BIGINT} and a.type = #{type}
+  </select>
+</mapper>

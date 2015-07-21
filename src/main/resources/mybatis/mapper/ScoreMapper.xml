@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmcc.edu.dao.ScoreMapper" >
+  <resultMap id="BaseResultMap" type="com.cmcc.edu.entity.Score" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="exam_id" property="examId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="stuname" property="stuname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, exam_id, score, class_id, stuname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_score
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sch_score
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cmcc.edu.entity.Score" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_score (exam_id, score, class_id, 
+      stuname)
+    values (#{examId,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, #{classId,jdbcType=INTEGER}, 
+      #{stuname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmcc.edu.entity.Score" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_score
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="examId != null" >
+        exam_id,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="stuname != null" >
+        stuname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="examId != null" >
+        #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="stuname != null" >
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmcc.edu.entity.Score" >
+    update sch_score
+    <set >
+      <if test="examId != null" >
+        exam_id = #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="stuname != null" >
+        stuname = #{stuname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmcc.edu.entity.Score" >
+    update sch_score
+    set exam_id = #{examId,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      class_id = #{classId,jdbcType=INTEGER},
+      stuname = #{stuname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectScoreList" resultMap="BaseResultMap" parameterType="com.cmcc.edu.entity.Score" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_score
+    where 1=1
+      <if test="examId != null" >
+        and exam_id = #{examId,jdbcType=INTEGER}
+      </if>
+      <if test="score != null" >
+       and score = #{score,jdbcType=DOUBLE}
+      </if>
+      <if test="classId != null" >
+       and class_id = #{classId,jdbcType=INTEGER}
+      </if>
+      <if test="stuname != null" >
+       and stuname = #{stuname,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <select id="selectScoreByExamId" resultType="com.cmcc.edu.entity.Score" parameterType="java.lang.Long" >
+    select a.class_id classId,class.name className,a.classAverageMark,a.gradeRanking,b.stuname,b.score,b.classRanking,c.title,course.name courseName,
+
+    (select format(AVG(score),1)  from sch_score where exam_id=#{examId,jdbcType=BIGINT} ) gradeAverageMark from
+
+ ( select *, (select count(1) + 1  from (
+SELECT
+			class_id,
+			format(AVG(score), 1) classAverageMark
+		FROM
+			sch_score
+		WHERE
+			exam_id = #{examId,jdbcType=BIGINT}
+		GROUP BY
+			class_id ) C where  D.classAverageMark <![CDATA[ < ]]>  C.classAverageMark) as gradeRanking from 
+( SELECT
+			class_id,
+			format(AVG(score), 1) classAverageMark
+		FROM
+			sch_score
+		WHERE
+			exam_id = #{examId,jdbcType=BIGINT}
+		GROUP BY
+			class_id ) D order by class_id , classAverageMark desc ) a join 
+( select A.class_id,A.stuname,A.score,A.exam_id ,(select count(1) + 1  from sch_score B  where B.exam_id = #{examId,jdbcType=BIGINT} and B.class_id = A.class_id and A.score <![CDATA[ < ]]> B.score) as classRanking from 
+sch_score  A where A.exam_id=#{examId,jdbcType=BIGINT} order by class_id , score desc ) b on a.class_id=b.class_id
+join sch_exam c on c.id=b.exam_id 
+join sch_course course on c.course_id=course.id
+join sch_class class on class.id=a.class_id
+
+  </select>
+  
+  <delete id="deleteByexamId" parameterType="java.lang.Long" >
+    delete from sch_score
+    where id = #{examId,jdbcType=BIGINT}
+  </delete>
+</mapper>
