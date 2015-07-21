@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmcc.edu.dao.TeacherMapper" >
+  <resultMap id="BaseResultMap" type="com.cmcc.edu.entity.Teacher" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="BIT" />
+    <result column="role_ids" property="roles" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="school_id" property="schoolId" jdbcType="BIGINT" />
+    <result column="ceac_id" property="ceacId" jdbcType="VARCHAR" />
+    <result column="pinyin" property="pinyin" jdbcType="VARCHAR" />
+    <result column="first_letter" property="firstLetter" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="organization_id" property="organizationId" jdbcType="BIGINT" />
+    <result column="course" property="course" jdbcType="VARCHAR" />
+    <result column="locked" property="locked" jdbcType="BIT" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="reserve_3" property="reserve3" jdbcType="VARCHAR" />
+    <result column="grade_id" property="gradeId" jdbcType="INTEGER" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="smstype" property="smstype" jdbcType="VARCHAR" />
+    <result column="feedback" property="feedback" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, password, salt, sex, mobile, type, role_ids, birthday, email, school_id, 
+    ceac_id, pinyin, first_letter, update_time, create_time, organization_id, course, 
+    locked, image_url, create_name, class_id, reserve_3, grade_id, nation, smstype, feedback, 
+    address
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_teacher
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_teacher
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cmcc.edu.entity.Teacher" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_teacher (username, password, salt, 
+      sex, mobile, type, role_ids, 
+      birthday, email, school_id, 
+      ceac_id, pinyin, first_letter, 
+      update_time, create_time, organization_id, 
+      course, locked, image_url, 
+      create_name, class_id, reserve_3, 
+      grade_id, nation, smstype, 
+      feedback, address)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{roles,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{schoolId,jdbcType=BIGINT}, 
+      #{ceacId,jdbcType=VARCHAR}, #{pinyin,jdbcType=VARCHAR}, #{firstLetter,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{organizationId,jdbcType=BIGINT}, 
+      #{course,jdbcType=VARCHAR}, #{locked,jdbcType=BIT}, #{imageUrl,jdbcType=VARCHAR}, 
+      #{createName,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR}, 
+      #{gradeId,jdbcType=INTEGER}, #{nation,jdbcType=VARCHAR}, #{smstype,jdbcType=VARCHAR}, 
+      #{feedback,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmcc.edu.entity.Teacher" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="roles != null" >
+        role_ids,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="schoolId != null" >
+        school_id,
+      </if>
+      <if test="ceacId != null" >
+        ceac_id,
+      </if>
+      <if test="pinyin != null" >
+        pinyin,
+      </if>
+      <if test="firstLetter != null" >
+        first_letter,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="course != null" >
+        course,
+      </if>
+      <if test="locked != null" >
+        locked,
+      </if>
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+      <if test="createName != null" >
+        create_name,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="reserve3 != null" >
+        reserve_3,
+      </if>
+      <if test="gradeId != null" >
+        grade_id,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="smstype != null" >
+        smstype,
+      </if>
+      <if test="feedback != null" >
+        feedback,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="roles != null" >
+        #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolId != null" >
+        #{schoolId,jdbcType=BIGINT},
+      </if>
+      <if test="ceacId != null" >
+        #{ceacId,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null" >
+        #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="firstLetter != null" >
+        #{firstLetter,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="course != null" >
+        #{course,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
+        #{locked,jdbcType=BIT},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createName != null" >
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+        #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null" >
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="smstype != null" >
+        #{smstype,jdbcType=VARCHAR},
+      </if>
+      <if test="feedback != null" >
+        #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmcc.edu.entity.Teacher" >
+    update sys_teacher
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="roles != null" >
+        role_ids = #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolId != null" >
+        school_id = #{schoolId,jdbcType=BIGINT},
+      </if>
+      <if test="ceacId != null" >
+        ceac_id = #{ceacId,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null" >
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="firstLetter != null" >
+        first_letter = #{firstLetter,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="course != null" >
+        course = #{course,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
+        locked = #{locked,jdbcType=BIT},
+      </if>
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createName != null" >
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve3 != null" >
+        reserve_3 = #{reserve3,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null" >
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="smstype != null" >
+        smstype = #{smstype,jdbcType=VARCHAR},
+      </if>
+      <if test="feedback != null" >
+        feedback = #{feedback,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmcc.edu.entity.Teacher" >
+    update sys_teacher
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT},
+      role_ids = #{roles,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      school_id = #{schoolId,jdbcType=BIGINT},
+      ceac_id = #{ceacId,jdbcType=VARCHAR},
+      pinyin = #{pinyin,jdbcType=VARCHAR},
+      first_letter = #{firstLetter,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      organization_id = #{organizationId,jdbcType=BIGINT},
+      course = #{course,jdbcType=VARCHAR},
+      locked = #{locked,jdbcType=BIT},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      create_name = #{createName,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=VARCHAR},
+      reserve_3 = #{reserve3,jdbcType=VARCHAR},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      smstype = #{smstype,jdbcType=VARCHAR},
+      feedback = #{feedback,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="findAll" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />  FROM sys_teacher
+    </select>
+    
+    <select id="findOne" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from sys_teacher
+	    where id = #{id,jdbcType=INTEGER}
+  	</select>
+  	
+    <select id="findAllowed" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from sys_teacher
+	    where school_id = #{schoolId,jdbcType=INTEGER}
+  	</select>
+  	
+    <select id="findAreaTeacher" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	 	select 
+	    <include refid="Base_Column_List" />
+	    from sys_teacher
+	    where school_id between #{schoolId,jdbcType=INTEGER} and  #{schoolId,jdbcType=INTEGER}+100000
+ 	 </select> 	
+ 	 
+ 	 <update id="lockUser" parameterType="java.lang.String">
+       update sys_teacher set 
+       locked = 1
+       where username = #{username,jdbcType=VARCHAR}
+    </update>    	
+    
+    <select id="findByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />  from sys_teacher where username=#{value}
+    </select>
+    
+    <delete id="deleteBatchRecord" parameterType="java.util.List" >
+	    delete from sys_teacher where id in 
+	    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">   
+	        #{item}   
+       </foreach>
+ 	 </delete>
+ 	 
+ 	 <select id="findTeacherByIds" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_teacher
+    where 1=1
+      <if test="stuId != null" >
+      and id in ( ${teacherIds} )
+      </if>
+      
+  </select>
+  
+  <select id="findTeacherByGradeId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_teacher
+    where 1=1
+      and grade_id = #{gradeId,jdbcType=INTEGER}
+      
+  </select>
+  
+  <select id="findTeacherBook" resultMap="BaseResultMap" parameterType="com.cmcc.edu.entity.Teacher" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_teacher
+    where 1=1
+    <if test="schoolId != null" >
+      and school_id=#{schoolId,jdbcType=BIGINT}
+    </if>
+      <if test="username != null and username != '' " >
+	  and username like concat('%',#{username,jdbcType=VARCHAR},'%')  
+    </if>
+    <if test="mobile != null" >
+	  and mobile like concat('%',#{mobile,jdbcType=VARCHAR},'%')  
+    </if>
+      
+  </select>
+</mapper>

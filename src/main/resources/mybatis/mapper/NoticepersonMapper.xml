@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmcc.edu.dao.NoticepersonMapper" >
+  <resultMap id="BaseResultMap" type="com.cmcc.edu.entity.Noticeperson" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="receiveid" property="receiveid" jdbcType="BIGINT" />
+    <result column="receivetype" property="receivetype" jdbcType="VARCHAR" />
+    <result column="notice_id" property="noticeId" jdbcType="BIGINT" />
+    <result column="isread" property="isread" jdbcType="VARCHAR" />
+    <result column="grouptype" property="grouptype" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="BIT" />
+    <result column="group_id" property="groupId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, receiveid, receivetype, notice_id, isread, grouptype, type, group_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sch_noticeperson
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sch_noticeperson
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cmcc.edu.entity.Noticeperson" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_noticeperson (receiveid, receivetype, notice_id, 
+      isread, grouptype, type, 
+      group_id)
+    values (#{receiveid,jdbcType=BIGINT}, #{receivetype,jdbcType=VARCHAR}, #{noticeId,jdbcType=BIGINT}, 
+      #{isread,jdbcType=VARCHAR}, #{grouptype,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, 
+      #{groupId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmcc.edu.entity.Noticeperson" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sch_noticeperson
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="receiveid != null" >
+        receiveid,
+      </if>
+      <if test="receivetype != null" >
+        receivetype,
+      </if>
+      <if test="noticeId != null" >
+        notice_id,
+      </if>
+      <if test="isread != null" >
+        isread,
+      </if>
+      <if test="grouptype != null" >
+        grouptype,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="receiveid != null" >
+        #{receiveid,jdbcType=BIGINT},
+      </if>
+      <if test="receivetype != null" >
+        #{receivetype,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeId != null" >
+        #{noticeId,jdbcType=BIGINT},
+      </if>
+      <if test="isread != null" >
+        #{isread,jdbcType=VARCHAR},
+      </if>
+      <if test="grouptype != null" >
+        #{grouptype,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmcc.edu.entity.Noticeperson" >
+    update sch_noticeperson
+    <set >
+      <if test="receiveid != null" >
+        receiveid = #{receiveid,jdbcType=BIGINT},
+      </if>
+      <if test="receivetype != null" >
+        receivetype = #{receivetype,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeId != null" >
+        notice_id = #{noticeId,jdbcType=BIGINT},
+      </if>
+      <if test="isread != null" >
+        isread = #{isread,jdbcType=VARCHAR},
+      </if>
+      <if test="grouptype != null" >
+        grouptype = #{grouptype,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmcc.edu.entity.Noticeperson" >
+    update sch_noticeperson
+    set receiveid = #{receiveid,jdbcType=BIGINT},
+      receivetype = #{receivetype,jdbcType=VARCHAR},
+      notice_id = #{noticeId,jdbcType=BIGINT},
+      isread = #{isread,jdbcType=VARCHAR},
+      grouptype = #{grouptype,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT},
+      group_id = #{groupId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="noticePersonList" resultType="com.cmcc.edu.entity.Noticeperson" parameterType="java.lang.Long" >
+    select 
+    a.id,a.receiveid,a.receivetype,a.notice_id noticeId,a.isread,a.grouptype,a.type,a.group_id groupId,b.username,b.mobile
+    from sch_noticeperson a ,sys_teacher b 
+    where a.receiveid=b.id and a.notice_id = #{noticeId,jdbcType=BIGINT} and a.receivetype='0'
+	union
+	select 
+    a.id,a.receiveid,a.receivetype,a.notice_id noticeId,a.isread,a.grouptype,a.type,a.group_id groupId,b.name username,b.mobile
+    from sch_noticeperson a ,sch_student b 
+    where a.receiveid=b.id and a.notice_id = #{noticeId,jdbcType=BIGINT} and a.receivetype='1'
+  </select>
+  
+  <select id="findPersonBynoticeId" resultType="com.cmcc.edu.entity.Noticeperson" parameterType="com.cmcc.edu.entity.Noticeperson" >
+    select * from sch_noticeperson where notice_id = #{noticeId,jdbcType=BIGINT} and receivetype=#{receivetype,jdbcType=VARCHAR} and #{receiveid,jdbcType=BIGINT}
+  </select>
+  
+  <delete id="deleteByNoticeId" parameterType="java.lang.Long" >
+    delete from sch_noticeperson
+    where notice_id = #{noticeId,jdbcType=BIGINT}
+  </delete>
+  
+  <update id="updateIsreadById" parameterType="java.lang.Long" >
+    update  sch_noticeperson
+     set isread = '0'
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

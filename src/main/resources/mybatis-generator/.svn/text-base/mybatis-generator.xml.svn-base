@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <properties resource="mybatis-generator/application.properties" />
+  <!-- 此处路径自己配置 -->
+  <classPathEntry location="C:\Users\admin\.m2\repository\mysql\mysql-connector-java\5.1.7\mysql-connector-java-5.1.7.jar" /> 
+  <context id="context1" targetRuntime="MyBatis3">
+	<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+  	<commentGenerator>  
+    	<!-- 是否去除自动生成的注释 true：是 ： false:否 -->  
+    	<property name="suppressAllComments" value="true" />  
+  	</commentGenerator> 
+    <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" />
+    <javaModelGenerator targetPackage="com.cmcc.edu.entity" targetProject="AndEducationDemo" >
+    	<property name="enableSubPackages" value="true" />
+		<property name="trimStrings" value="true" />
+    </javaModelGenerator>
+    <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="AndEducationDemo/src/main/resources" />
+    <javaClientGenerator targetPackage="com.cmcc.edu.dao" targetProject="AndEducationDemo" type="XMLMAPPER">
+    	<property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+    <table tableName="appplatform" domainObjectName="Appplatform" enableCountByExample="false"
+    	enableUpdateByExample="false" enableDeleteByExample="false"
+      	enableSelectByExample="false" selectByExampleQueryId="false" >
+		<generatedKey column="apkid" sqlStatement="MySql" identity="true" />
+	</table>
+  </context>
+</generatorConfiguration>

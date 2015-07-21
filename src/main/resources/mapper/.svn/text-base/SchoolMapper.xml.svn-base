@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmcc.edu.dao.SchoolMapper" >
+  <resultMap id="BaseResultMap" type="com.cmcc.edu.entity.School" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+    <result column="establish_time" property="establishTime" jdbcType="DATE" />
+    <result column="school_mode" property="schoolMode" jdbcType="VARCHAR" />
+    <result column="school_class" property="schoolClass" jdbcType="VARCHAR" />
+    <result column="school_bank" property="schoolBank" jdbcType="VARCHAR" />
+    <result column="adress" property="adress" jdbcType="VARCHAR" />
+    <result column="post_code" property="postCode" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="school_master" property="schoolMaster" jdbcType="VARCHAR" />
+    <result column="updatename" property="updatename" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="province_code" property="provinceCode" jdbcType="VARCHAR" />
+    <result column="city_code" property="cityCode" jdbcType="VARCHAR" />
+    <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, type, area_code, establish_time, school_mode, school_class, school_bank, 
+    adress, post_code, telephone, website, email, school_master, updatename, update_time, 
+    state, province_code, city_code, starttime, endtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_school
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_school
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cmcc.edu.entity.School" >
+    insert into sys_school (id, name, type, 
+      area_code, establish_time, school_mode, 
+      school_class, school_bank, adress, 
+      post_code, telephone, website, 
+      email, school_master, updatename, 
+      update_time, state, province_code, 
+      city_code, starttime, endtime
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{areaCode,jdbcType=VARCHAR}, #{establishTime,jdbcType=DATE}, #{schoolMode,jdbcType=VARCHAR}, 
+      #{schoolClass,jdbcType=VARCHAR}, #{schoolBank,jdbcType=VARCHAR}, #{adress,jdbcType=VARCHAR}, 
+      #{postCode,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{schoolMaster,jdbcType=VARCHAR}, #{updatename,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, 
+      #{cityCode,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cmcc.edu.entity.School" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_school
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      id,
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="areaCode != null" >
+        area_code,
+      </if>
+      <if test="establishTime != null" >
+        establish_time,
+      </if>
+      <if test="schoolMode != null" >
+        school_mode,
+      </if>
+      <if test="schoolClass != null" >
+        school_class,
+      </if>
+      <if test="schoolBank != null" >
+        school_bank,
+      </if>
+      <if test="adress != null" >
+        adress,
+      </if>
+      <if test="postCode != null" >
+        post_code,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="schoolMaster != null" >
+        school_master,
+      </if>
+      <if test="updatename != null" >
+        updatename,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="provinceCode != null" >
+        province_code,
+      </if>
+      <if test="cityCode != null" >
+        city_code,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=BIGINT},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="establishTime != null" >
+        #{establishTime,jdbcType=DATE},
+      </if>
+      <if test="schoolMode != null" >
+        #{schoolMode,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolClass != null" >
+        #{schoolClass,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolBank != null" >
+        #{schoolBank,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null" >
+        #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolMaster != null" >
+        #{schoolMaster,jdbcType=VARCHAR},
+      </if>
+      <if test="updatename != null" >
+        #{updatename,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cmcc.edu.entity.School" >
+    update sys_school
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        area_code = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="establishTime != null" >
+        establish_time = #{establishTime,jdbcType=DATE},
+      </if>
+      <if test="schoolMode != null" >
+        school_mode = #{schoolMode,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolClass != null" >
+        school_class = #{schoolClass,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolBank != null" >
+        school_bank = #{schoolBank,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null" >
+        adress = #{adress,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolMaster != null" >
+        school_master = #{schoolMaster,jdbcType=VARCHAR},
+      </if>
+      <if test="updatename != null" >
+        updatename = #{updatename,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        province_code = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cmcc.edu.entity.School" >
+    update sys_school
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      area_code = #{areaCode,jdbcType=VARCHAR},
+      establish_time = #{establishTime,jdbcType=DATE},
+      school_mode = #{schoolMode,jdbcType=VARCHAR},
+      school_class = #{schoolClass,jdbcType=VARCHAR},
+      school_bank = #{schoolBank,jdbcType=VARCHAR},
+      adress = #{adress,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      school_master = #{schoolMaster,jdbcType=VARCHAR},
+      updatename = #{updatename,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      starttime = #{starttime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="findOne" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from sys_school
+	    where id = #{id,jdbcType=BIGINT}
+  	</select>
+  <select id="findSchoolList" resultType="com.cmcc.edu.entity.School" parameterType="com.cmcc.edu.entity.School" >
+    select a.id,a.email,a.telephone,a.name,a.school_master schoolMaster,a.starttime,a.endtime,a.updatename,a.update_time updateTime,b.area_name provinceName,c.area_name cityName,(CASE 
+WHEN a.state= '0' and a.endtime<![CDATA[>=]]> now() THEN '正常'
+WHEN a.state='1' THEN '未付费' 
+WHEN a.state='0' and a.endtime<![CDATA[<]]> now()  THEN '已过期'  end ) stateName from sys_school a  
+    left join sys_area b on a.province_code=b.code
+    left join sys_area c on a.city_code=c.code
+	where 1=1
+	<if test="name != null and name != ''" >
+      and name like concat('%',#{name,jdbcType=VARCHAR},'%') 
+    </if>
+	<if test="schoolMaster != null and schoolMaster != '' " >
+      and school_master like concat('%',#{schoolMaster,jdbcType=VARCHAR},'%') 
+    </if>
+	<if test="provinceCode != null and provinceCode != 0 " >
+	  and province_code = #{provinceCode,jdbcType=VARCHAR}
+    </if>
+    <if test="cityCode != null  and cityCode != 0 " >
+	  and city_code = #{cityCode,jdbcType=VARCHAR}
+    </if>
+    <if test="state != null and state != '' and state == 0 " >
+	   and state = #{state,jdbcType=VARCHAR} and a.endtime<![CDATA[>=]]> now()
+    </if>
+    <if test="state != null and state != '' and state == 1 " >
+	   and state = #{state,jdbcType=VARCHAR} 
+    </if>
+    <if test="state != null and state != '' and state == 2 " >
+	   and a.endtime<![CDATA[<]]> now()
+    </if>
+	
+      
+  </select>
+  
+  <select id="findMaxSchoolId" parameterType="java.lang.String" resultType="java.lang.Integer">
+	    select max(cast(SUBSTRING(concat(id),7,3) as UNSIGNED ))   ds from sys_school where SUBSTRING(concat(id),1,6)=#{schoolCode,jdbcType=VARCHAR}
+  	</select>
+  	
+  	
+  	<select id="findDetailSchoolById" resultType="com.cmcc.edu.entity.School" parameterType="java.lang.Long" >
+    select a.id,a.email,a.telephone,a.name,a.school_master schoolMaster,a.starttime,a.endtime,b.area_name provinceName,c.area_name cityName,d.area_name areaName,(CASE 
+WHEN a.state= '0' and a.endtime<![CDATA[>=]]> now() THEN '正常'
+WHEN a.state='1' THEN '未付费' 
+WHEN a.state='0' and a.endtime<![CDATA[<]]> now()  THEN '已过期'  end ) stateName,
+(CASE 
+WHEN a.state= '0' THEN '已付费' 
+WHEN a.state='1' THEN '未付费' 
+  end ) cashState from sys_school a  
+    left join sys_area b on a.province_code=b.code
+    left join sys_area c on a.city_code=c.code
+    left join sys_area d on a.area_code=d.code
+	where 1=1
+	and a.id=#{id,jdbcType=BIGINT}
+      
+  </select>
+  
+</mapper>
