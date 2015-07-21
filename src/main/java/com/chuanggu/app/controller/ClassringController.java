@@ -1,0 +1,17 @@
+package com.chuanggu.app.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.chuanggu.app.entity.Admin;
+
+@Controller
+@RequestMapping("/message")
+public class ClassringController extends PageController<Admin>{
+
+
+    @RequestMapping
+    public String list() {
+        return "classring/index";
+    }
+}
