@@ -1,10 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
-<html>  
-<head>  
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
-<title>Hello World</title>  
-</head>  
-<body>  
-Hello!jsp
-</body>    
-</html>   
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<body>
+ 欢迎登陆教师管理系统，您可以在系统中使用课程管理，作业管理，成绩管理等功能。
+</body>
