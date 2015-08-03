@@ -1,77 +1,15 @@
-/* header, footer */
-/* menu, btn-ui */
-/* dataTables_paginate hover background*/
-/* dataTables_paginate default background*/
-/* dataTables_paginate current*/
 /* required */
-html,
-body {
-  font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
-  font-size: 14px;
-  background: #f4f4f4;
-}
-ul,
-li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-#body {
-  position: absolute;
-  top: 86px;
-  bottom: 35px;
-  width: 100%;
-}
-#content {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  padding-left: 70px;
-  overflow-y: auto;
-}
-.text-danger {
-  color: #ce4844;
-}
-.control-label {
-  font-weight: normal;
-}
-.form-title {
-  margin: 15px 0 20px;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 2;
-  border-bottom: 1px solid #dddddd;
-}
-.form-footer {
-  padding: 50px 0 0;
+.animate-ease,
+.nav-bar .navbar-default .navbar-nav > li:before,
+.nav-bar .navbar-default .navbar-nav > li:after,
+.nav-bar .second-menu li {
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
 }
 .filed-wrapper {
   position: relative;
-}
-.filed-wrapper .validationMessage {
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  color: #d9534f;
-  font-weight: bold;
-  background-color: rgba(240, 240, 240, 0.6);
-  padding: 2px 4px;
-  border-radius: 2px 2px 0 0;
-}
-.form-group {
-  margin-bottom: 30px;
-}
-.form-group .filed-wrapper .validationMessage {
-  right: inherit;
-  bottom: -22px;
-  left: 15px;
-  font-weight: normal;
-  font-size: 12px;
-  background: none;
-}
-#orgSearchForm .form-group {
-  margin-bottom: 15px;
 }
 .required {
   position: relative;
@@ -84,23 +22,223 @@ li {
   font-size: 18px;
   color: #cc0000;
 }
-.btn {
-  margin: 3px 3px 0 0;
-  border: 0;
-  outline: none;
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
+html,
+body {
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, sans-serif;
+  font-size: 14px;
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.site-bar {
+  height: 90px;
+  background-color: #1e2022;
+}
+.site-bar .container {
+  height: 100%;
+}
+.site-bar .site-bar-table {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.site-bar .site-bar-row {
+  display: table-row;
+}
+.site-bar .site-bar-cell {
+  display: table-cell;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 16px;
+}
+.site-bar .logo {
+  width: 25%;
+  cursor: pointer;
+}
+.site-bar .logo .glyphicon {
+  color: #94c766;
+  font-size: 45px;
+}
+.site-bar .logo strong {
+  margin-left: 20px;
+  font-size: 35px;
+  font-weight: 600;
+  vertical-align: top;
+  letter-spacing: 4px;
+  font-family: Arial, 'Microsoft Yahei', STHeiti, sans-serif;
+}
+.site-bar .slogan {
+  width: 30%;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.site-bar .contactInfo {
+  text-align: center;
+}
+.site-bar .contactInfo label {
+  padding: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  width: 29px;
+  margin: 0;
+}
+.site-bar .contactInfo strong {
+  color: #94c766;
+  font-size: 18px;
+  margin-left: 10px;
+}
+.site-bar .func-links {
+  text-align: right;
+}
+.site-bar .func-links .glyphicon {
+  cursor: pointer;
+  margin-left: 10px;
+}
+#logo {
+  margin: 15px;
+}
+#functionNav {
+  margin-top: 30px;
+}
+#functionNav li {
+  padding: 0 10px;
+  color: #fff;
+}
+#functionNav strong {
+  font-weight: normal;
+}
+#functionNav a {
+  padding: 0;
+  color: #fff;
+}
+#functionNav a:hover {
+  background: none;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 35px;
+  color: #fff;
+}
+#footer p {
+  margin: 0;
+}
+#footer span {
+  padding: 0 5px;
+}
+.nav-bar .navbar-default {
+  background-color: #22b5e1;
+  z-index: 11;
+}
+.nav-bar .navbar-default .navbar-nav > li {
+  position: relative;
+}
+.nav-bar .navbar-default .navbar-nav > li:hover:before {
+  height: 5px;
+}
+.nav-bar .navbar-default .navbar-nav > li:hover:after {
+  height: 100%;
+}
+.nav-bar .navbar-default .navbar-nav > li:hover .second-menu {
+  display: block;
+}
+.nav-bar .navbar-default .navbar-nav > li:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: #000;
+}
+.nav-bar .navbar-default .navbar-nav > li:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 0;
+  opacity: 0.1;
+  background: #000;
+}
+.nav-bar .navbar-default .navbar-nav > li > a {
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0px;
+  font-weight: 400;
+  font-size: 15px;
+}
+.nav-bar .navbar-default .navbar-nav > .active > a,
+.nav-bar .navbar-default .navbar-nav > .active > a:focus,
+.nav-bar .navbar-default .navbar-nav > .active > a:hover {
+  color: #555;
+  background-color: transparent;
+}
+.nav-bar .second-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: #ffffff;
+  background-color: #000000;
+  display: none;
+}
+.nav-bar .second-menu li {
+  position: relative;
+  line-height: 3;
+  text-align: left;
+}
+.nav-bar .second-menu li a {
+  padding: 10px 40px 10px 50px;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-bar .second-menu li a:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25px;
+  content: "";
+  border: 2px solid #22b5e1;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  display: block;
+  margin: auto;
+  z-index: 1;
+}
+.nav-bar .second-menu li:hover a {
+  background-color: #22b5e1;
+}
+.nav-bar .second-menu li:hover a:before {
+  border-color: #fff;
+}
+.jconfirm.white .jconfirm-box {
   border-radius: 0;
 }
-.btn-ui {
-  color: #ffffff;
-  background-color: #6d6d91;
+.disableOrgContent .glyphicon {
+  font-size: 18px;
+  color: #f0ad4e;
 }
-.btn-ui:active,
-.btn-ui:focus,
-.btn-ui:hover {
-  color: #ffffff;
-  background-color: #59597b;
+.disableOrgContent storng {
+  margin-left: 10px;
+  font-weight: bold;
+}
+.disableOrgContent ul.tips {
+  list-style: decimal;
+  padding-left: 40px;
+}
+.disableOrgContent ul.tips li {
+  list-style: decimal;
+  padding: 5px 0;
 }
 .form-signin {
   max-width: 330px;
@@ -136,107 +274,7 @@ li {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-#header {
-  background: #333366;
-}
-#logo {
-  margin: 15px;
-}
-#functionNav {
-  margin-top: 30px;
-}
-#functionNav li {
-  padding: 0 10px;
-  color: #fff;
-}
-#functionNav strong {
-  font-weight: normal;
-}
-#functionNav a {
-  padding: 0;
-  color: #fff;
-}
-#functionNav a:hover {
-  background: none;
-}
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  line-height: 35px;
-  color: #fff;
-  background: #333366;
-}
-#footer p {
-  margin: 0;
-}
-#footer span {
-  padding: 0 5px;
-}
-#menuBar {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  min-width: 55px;
-  padding: 0;
-  background: #ffffff;
-  border-right: 1px solid #dddddd;
-  z-index: 12;
-  overflow-y: auto;
-}
-#menuBar li > a {
-  color: #333333;
-  padding-left: 20px;
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  white-space: nowrap;
-}
-#menuBar li > a .glyphicon {
-  vertical-align: middle;
-  font-size: 20px;
-  top: -1px;
-}
-#menuBar li.active > a,
-#menuBar li.active > a:focus,
-#menuBar li.active > a:hover {
-  color: #ffffff;
-  background: #6d6d91;
-}
-#menuBar .option {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: middle;
-  font-size: 15px;
-  width: 0;
-  margin-left: 5px;
-  transition: width 0.3s ease-in;
-}
-#menuBar:hover .option {
-  width: 80px;
-}
-.sideNavToggle {
-  padding: 10px 15px;
-  color: #337ab7;
-  border-bottom: 1px solid #dddddd;
-}
-.jconfirm.white .jconfirm-box {
-  border-radius: 0;
-}
-.disableOrgContent .glyphicon {
-  font-size: 18px;
-  color: #f0ad4e;
-}
-.disableOrgContent storng {
-  margin-left: 10px;
-  font-weight: bold;
-}
-.disableOrgContent ul.tips {
-  list-style: decimal;
-  padding-left: 40px;
-}
-.disableOrgContent ul.tips li {
-  list-style: decimal;
-  padding: 5px 0;
+.container {
+  width: 1000px;
+  max-width: none !important;
 }

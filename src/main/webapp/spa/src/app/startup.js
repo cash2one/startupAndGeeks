@@ -32,6 +32,8 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-mapping', 'knoc
         require: 'components/register/register'
     });
 
+    ko.components.register('site-bar', { require: 'components/site-bar/site-bar' });
+
     // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
     // Start the application

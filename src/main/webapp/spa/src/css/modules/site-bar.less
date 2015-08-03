@@ -1,0 +1,65 @@
+.site-bar {
+    height: @sitebarHeight;
+    background-color: @dark;
+    .container {
+        height: 100%;
+    }
+    .site-bar-table {
+        display: table;
+        height: 100%;
+        width: 100%;
+    }
+    .site-bar-row {
+        display: table-row;
+    }
+    .site-bar-cell {
+        display: table-cell;
+        vertical-align: middle;
+        color: #fff;
+        font-size: 16px;
+    }
+    .logo {
+        width: 25%;
+        cursor: pointer;
+        .glyphicon {
+            color: @green;
+            font-size: 45px;
+        }
+        strong {
+            margin-left: 20px;
+            font-size: 35px;
+            font-weight: 600;
+            vertical-align: top;
+            letter-spacing: 4px;
+            font-family: Arial, 'Microsoft Yahei', STHeiti, sans-serif;
+        }
+    }
+    .slogan {
+        width: 30%;
+        font-size: 18px;
+        color: @gray;
+    }
+    .contactInfo {
+        text-align: center;
+        label {
+            padding: 2px;
+            background-color: @gray;
+            border-radius: 16px;
+            width: 29px;
+            margin: 0;
+        }
+        strong {
+            color: @green;
+            font-size: 18px;
+            margin-left: 10px;
+        }
+    }
+    .func-links {
+        text-align: right;
+        .glyphicon {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    }
+}
+

@@ -1,4 +1,4 @@
-define(['knockout','text!./baiye-footer.html'], function(ko, template){
+define(['knockout','text!./site-footer.html'], function(ko, template){
 
 	function FooterViewModel(params) {
 		this.route = params.route;

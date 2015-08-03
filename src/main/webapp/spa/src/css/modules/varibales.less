@@ -1,41 +1,33 @@
-/* header, footer */
-
-@default-color: #333366;
-@boeder-color: #ddd;
-/* menu, btn-ui */
-
-@violet: #6d6d91;
-@DeepViolet: #59597b;
-@black: #000;
-@white: #fff;
-@gray: #333;
-@LightGray: #ccc;
-/* dataTables_paginate hover background*/
-
-@SmokeGray: #93939a;
-/* dataTables_paginate default background*/
-
-@SmokeWhite: #eee;
-/* dataTables_paginate current*/
-
-@orange: #ff5500;
-
-@primary: #337ab7;
+@siteBackground: #fff;
+@maxWidth: 1000px;
+@sitebarHeight: 90px;
 
 /* required */
-@red: #c00;
 
+@black: #000;
+@dark: #1E2022;
+@red: #c00;
+@blue: #22b5e1;
+@green: #94C766;
+@gray: rgba(255, 255, 255, 0.5);
 .radius(@length) {
     -moz-border-radius: @length;
     -webkit-border-radius: @length;
     border-radius: @length;
 }
 
-.textoverflow(){
+.textoverflow() {
     white-space: nowrap;
     overflow: hidden;
     -ms-text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
+}
+
+.animate-ease {
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+    transition: all 0.1s ease;
 }
 

@@ -1,4 +1,4 @@
-define(['knockout', 'text!./baiye-header.html'], function(ko, template) {
+define(['knockout', 'text!./site-header.html'], function(ko, template) {
 
     function HeaderViewModel(params) {
 
@@ -13,3 +13,4 @@ define(['knockout', 'text!./baiye-header.html'], function(ko, template) {
         template: template
     };
 });
+

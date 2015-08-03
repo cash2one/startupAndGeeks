@@ -13,5 +13,5 @@ define(["knockout", 'jquery', "text!./home.html"], function(ko, $, homeTemplate)
         viewModel: HomeViewModel,
         template: homeTemplate
     };
-
 });
+
