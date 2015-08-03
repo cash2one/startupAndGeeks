@@ -1,28 +1,63 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
-<generatorConfiguration >
-  <properties resource="mybatis-generator/application.properties" />
-  <!-- 此处路径自己配置 -->
-  <classPathEntry location="C:\Users\cmcc\.m2\repository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar" /> 
-  <context id="context1" targetRuntime="MyBatis3">
-	<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
-  	<commentGenerator>  
-    	<!-- 是否去除自动生成的注释 true：是 ： false:否 -->  
-    	<property name="suppressAllComments" value="true" />  
-  	</commentGenerator> 
-    <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" />
-    <javaModelGenerator targetPackage="com.cmcc.edu.entity" targetProject="AndEducationDemo" >
-    	<property name="enableSubPackages" value="true" />
-		<property name="trimStrings" value="true" />
-    </javaModelGenerator>
-    <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="AndEducationDemo/src/main/resources" />
-    <javaClientGenerator targetPackage="com.cmcc.edu.dao" targetProject="AndEducationDemo" type="XMLMAPPER">
-    	<property name="enableSubPackages" value="true" />
-    </javaClientGenerator>
-    <table tableName="sch_attencetime" domainObjectName="AttenceTime" enableCountByExample="false"
-    	enableUpdateByExample="false" enableDeleteByExample="false"
-      	enableSelectByExample="false" selectByExampleQueryId="false" >
-		<generatedKey column="id" sqlStatement="MySql" identity="true" />
-	</table>
-  </context>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+      PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+      "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+ 
+<generatorConfiguration>
+    <classPathEntry location="C:\Users\cmcc\.m2\repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar" />
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 注释 -->  
+        <commentGenerator >  
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->  
+            <property name="suppressDate" value="false" /> <!-- 是否生成注释代时间戳-->  
+        </commentGenerator>  
+         
+        <!-- jdbc连接 -->  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+            connectionURL="jdbc:mysql://localhost:3306/startup?characterEncoding=utf-8" userId="root" 
+            password="cmcc1234" />  
+         
+        <!-- 类型转换 -->  
+        <javaTypeResolver>  
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver> 
+         
+        <!-- generate Model -->
+        <javaModelGenerator targetPackage="com.chuanggu.app.entity"
+            targetProject="D:\Git\startupAndGeeks\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+         
+        <!-- generate xml -->
+        <sqlMapGenerator targetPackage="com.chuanggu.app.dao.mapper"
+            targetProject="D:\Git\startupAndGeeks\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+         
+        <!-- generate Mapper -->
+       <javaClientGenerator type="XMLMAPPER"
+            targetPackage="com.chuanggu.app.dao" targetProject="D:\Git\startupAndGeeks\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator> 
+        
+        <table  tableName="project_tag"  domainObjectName="ProjectTag"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/> 
+        </table>
+        <table  tableName="project"  domainObjectName="Project"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+                   <!--  忽略列，不生成bean 字段 
+            <ignoreColumn column="FRED" />  -->  
+            <!-- 指定列的java数据类型 
+            <columnOverride column="DOUBLE" jdbcType="DECIMAL" /> --> 
+            <!-- <columnOverride column="id" property="id"/> -->
+            <property name="useActualColumnNames" value="true"/> 
+        </table>
+    </context>
 </generatorConfiguration>
