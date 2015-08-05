@@ -1,0 +1,16 @@
+.filed-wrapper {
+    position: relative;
+}
+
+.required {
+    position: relative;
+    &:after {
+        content: "*";
+        position: absolute;
+        top: 25%;
+        right: 5px;
+        font-size: 18px;
+        color: @red;
+    }
+}
+
