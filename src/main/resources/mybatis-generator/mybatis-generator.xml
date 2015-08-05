@@ -6,7 +6,7 @@
 <generatorConfiguration>
     <classPathEntry location="C:\Users\cmcc\.m2\repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar" />
     <context id="DB2Tables" targetRuntime="MyBatis3">
-        <!-- 注释 -->  
+        <!-- 注释 -->
         <commentGenerator >  
             <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->  
             <property name="suppressDate" value="false" /> <!-- 是否生成注释代时间戳-->  
@@ -40,15 +40,63 @@
        <javaClientGenerator type="XMLMAPPER"
             targetPackage="com.chuanggu.app.dao" targetProject="D:\Git\startupAndGeeks\src\main\java">
             <property name="enableSubPackages" value="true" />
-        </javaClientGenerator> 
+        </javaClientGenerator>
         
-        <table  tableName="project_tag"  domainObjectName="ProjectTag"
+        <table  tableName="tag"  domainObjectName="Tag"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/> 
+        </table>
+        <table  tableName="support"  domainObjectName="Support"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/> 
+        </table>
+        <table  tableName="smart"  domainObjectName="smart"
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">
         <property name="useActualColumnNames" value="true"/> 
         </table>
         <table  tableName="project"  domainObjectName="Project"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/> 
+        </table>
+        <table  tableName="product"  domainObjectName="Product"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/> 
+        </table>
+        <table  tableName="maker"  domainObjectName="Maker"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/> 
+        </table>
+        <table  tableName="investor"  domainObjectName="Investor"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/> 
+        </table>
+        <table  tableName="financing_process"  domainObjectName="FinanceProcess"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/> 
+        </table>
+        <table  tableName="company"  domainObjectName="Company"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/> 
+        </table>
+        <table  tableName="project_tag"  domainObjectName="ProjectTag"
         enableCountByExample="false" enableUpdateByExample="false"
         enableDeleteByExample="false" enableSelectByExample="false"
         selectByExampleQueryId="false">

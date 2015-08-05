@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuanggu.app.dao.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.chuanggu.app.entity.Company" >
+    <id column="company_id" property="company_id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="establish_time" property="establish_time" jdbcType="DATE" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="stage" property="stage" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="financing_or_not" property="financing_or_not" jdbcType="VARCHAR" />
+    <result column="financing_stage" property="financing_stage" jdbcType="VARCHAR" />
+    <result column="financing_exp" property="financing_exp" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="group" property="group" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    company_id, name, establish_time, address, industry, stage, email, logo, website, 
+    tag, financing_or_not, financing_stage, financing_exp, introduction, group, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where company_id = #{company_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from company
+    where company_id = #{company_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chuanggu.app.entity.Company" >
+    insert into company (company_id, name, establish_time, 
+      address, industry, stage, 
+      email, logo, website, 
+      tag, financing_or_not, financing_stage, 
+      financing_exp, introduction, group, 
+      state)
+    values (#{company_id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{establish_time,jdbcType=DATE}, 
+      #{address,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, #{stage,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, 
+      #{tag,jdbcType=VARCHAR}, #{financing_or_not,jdbcType=VARCHAR}, #{financing_stage,jdbcType=VARCHAR}, 
+      #{financing_exp,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{group,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chuanggu.app.entity.Company" >
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="company_id != null" >
+        company_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="establish_time != null" >
+        establish_time,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="industry != null" >
+        industry,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="tag != null" >
+        tag,
+      </if>
+      <if test="financing_or_not != null" >
+        financing_or_not,
+      </if>
+      <if test="financing_stage != null" >
+        financing_stage,
+      </if>
+      <if test="financing_exp != null" >
+        financing_exp,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="group != null" >
+        group,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="company_id != null" >
+        #{company_id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="establish_time != null" >
+        #{establish_time,jdbcType=DATE},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="financing_or_not != null" >
+        #{financing_or_not,jdbcType=VARCHAR},
+      </if>
+      <if test="financing_stage != null" >
+        #{financing_stage,jdbcType=VARCHAR},
+      </if>
+      <if test="financing_exp != null" >
+        #{financing_exp,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="group != null" >
+        #{group,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chuanggu.app.entity.Company" >
+    update company
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="establish_time != null" >
+        establish_time = #{establish_time,jdbcType=DATE},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="financing_or_not != null" >
+        financing_or_not = #{financing_or_not,jdbcType=VARCHAR},
+      </if>
+      <if test="financing_stage != null" >
+        financing_stage = #{financing_stage,jdbcType=VARCHAR},
+      </if>
+      <if test="financing_exp != null" >
+        financing_exp = #{financing_exp,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="group != null" >
+        group = #{group,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where company_id = #{company_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chuanggu.app.entity.Company" >
+    update company
+    set name = #{name,jdbcType=VARCHAR},
+      establish_time = #{establish_time,jdbcType=DATE},
+      address = #{address,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      stage = #{stage,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      financing_or_not = #{financing_or_not,jdbcType=VARCHAR},
+      financing_stage = #{financing_stage,jdbcType=VARCHAR},
+      financing_exp = #{financing_exp,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      group = #{group,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR}
+    where company_id = #{company_id,jdbcType=VARCHAR}
+  </update>
+</mapper>
