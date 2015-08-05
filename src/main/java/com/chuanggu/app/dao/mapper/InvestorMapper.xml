@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuanggu.app.dao.InvestorMapper" >
+  <resultMap id="BaseResultMap" type="com.chuanggu.app.entity.Investor" >
+    <result column="investor_id" property="investor_id" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="invest_area" property="invest_area" jdbcType="VARCHAR" />
+    <result column="experience" property="experience" jdbcType="VARCHAR" />
+    <result column="invest_stage" property="invest_stage" jdbcType="VARCHAR" />
+    <result column="invest_company" property="invest_company" jdbcType="VARCHAR" />
+    <result column="cash" property="cash" jdbcType="VARCHAR" />
+    <result column="success_example" property="success_example" jdbcType="VARCHAR" />
+    <result column="verify" property="verify" jdbcType="TINYINT" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.chuanggu.app.entity.Investor" >
+    insert into investor (investor_id, position, introduction, 
+      education, phone, invest_area, 
+      experience, invest_stage, invest_company, 
+      cash, success_example, verify, 
+      state)
+    values (#{investor_id,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{invest_area,jdbcType=VARCHAR}, 
+      #{experience,jdbcType=VARCHAR}, #{invest_stage,jdbcType=VARCHAR}, #{invest_company,jdbcType=VARCHAR}, 
+      #{cash,jdbcType=VARCHAR}, #{success_example,jdbcType=VARCHAR}, #{verify,jdbcType=TINYINT}, 
+      #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chuanggu.app.entity.Investor" >
+    insert into investor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="investor_id != null" >
+        investor_id,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="invest_area != null" >
+        invest_area,
+      </if>
+      <if test="experience != null" >
+        experience,
+      </if>
+      <if test="invest_stage != null" >
+        invest_stage,
+      </if>
+      <if test="invest_company != null" >
+        invest_company,
+      </if>
+      <if test="cash != null" >
+        cash,
+      </if>
+      <if test="success_example != null" >
+        success_example,
+      </if>
+      <if test="verify != null" >
+        verify,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="investor_id != null" >
+        #{investor_id,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="invest_area != null" >
+        #{invest_area,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null" >
+        #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="invest_stage != null" >
+        #{invest_stage,jdbcType=VARCHAR},
+      </if>
+      <if test="invest_company != null" >
+        #{invest_company,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null" >
+        #{cash,jdbcType=VARCHAR},
+      </if>
+      <if test="success_example != null" >
+        #{success_example,jdbcType=VARCHAR},
+      </if>
+      <if test="verify != null" >
+        #{verify,jdbcType=TINYINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

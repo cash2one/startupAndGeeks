@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuanggu.app.dao.FinanceProcessMapper" >
+  <resultMap id="BaseResultMap" type="com.chuanggu.app.entity.FinanceProcess" >
+    <id column="financing_id" property="financing_id" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="VARCHAR" />
+    <result column="stage" property="stage" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    financing_id, amount, stage, company, time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from financing_process
+    where financing_id = #{financing_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from financing_process
+    where financing_id = #{financing_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chuanggu.app.entity.FinanceProcess" >
+    insert into financing_process (financing_id, amount, stage, 
+      company, time)
+    values (#{financing_id,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, #{stage,jdbcType=VARCHAR}, 
+      #{company,jdbcType=VARCHAR}, #{time,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chuanggu.app.entity.FinanceProcess" >
+    insert into financing_process
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="financing_id != null" >
+        financing_id,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="financing_id != null" >
+        #{financing_id,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chuanggu.app.entity.FinanceProcess" >
+    update financing_process
+    <set >
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=DATE},
+      </if>
+    </set>
+    where financing_id = #{financing_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chuanggu.app.entity.FinanceProcess" >
+    update financing_process
+    set amount = #{amount,jdbcType=VARCHAR},
+      stage = #{stage,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      time = #{time,jdbcType=DATE}
+    where financing_id = #{financing_id,jdbcType=VARCHAR}
+  </update>
+</mapper>

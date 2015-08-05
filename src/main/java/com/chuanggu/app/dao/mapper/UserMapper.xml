@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuanggu.app.dao.UserDao" >
+
+<resultMap type="com.chuanggu.app.entity.User" id="User">
+		<id column="id" property="id" />
+		<result column="login_name" property="loginName" />
+		<result column="nick_name" property="nickName" />
+		<result column="password" property="password" />
+		<result column="salt" property="salt" />
+		<result column="email" property="email" />
+		<result column="telephone" property="telephone" />
+		<result column="icon_url" property="appVersiconUrlion" />
+		<result column="address" property="type" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+  <select id="findUserByLoginName" resultMap="User">
+    select * from user where loginName = #{name}
+  </select>
+  <select id="findUserByEmail" resultMap="User">
+    select * from user where email = #{email}
+  </select>
+  
+</mapper>

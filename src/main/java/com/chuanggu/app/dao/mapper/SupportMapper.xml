@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuanggu.app.dao.SupportMapper" >
+  <resultMap id="BaseResultMap" type="com.chuanggu.app.entity.Support" >
+    <result column="support_id" property="support_id" jdbcType="VARCHAR" />
+    <result column="amout" property="amout" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="limit_number" property="limit_number" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="fee" property="fee" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="deliver_time" property="deliver_time" jdbcType="DATE" />
+  </resultMap>
+  <insert id="insert" parameterType="com.chuanggu.app.entity.Support" >
+    insert into support (support_id, amout, number, 
+      limit_number, introduction, fee, 
+      state, deliver_time)
+    values (#{support_id,jdbcType=VARCHAR}, #{amout,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
+      #{limit_number,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{fee,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{deliver_time,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chuanggu.app.entity.Support" >
+    insert into support
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="support_id != null" >
+        support_id,
+      </if>
+      <if test="amout != null" >
+        amout,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="limit_number != null" >
+        limit_number,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="fee != null" >
+        fee,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="deliver_time != null" >
+        deliver_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="support_id != null" >
+        #{support_id,jdbcType=VARCHAR},
+      </if>
+      <if test="amout != null" >
+        #{amout,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="limit_number != null" >
+        #{limit_number,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="fee != null" >
+        #{fee,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="deliver_time != null" >
+        #{deliver_time,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+</mapper>
