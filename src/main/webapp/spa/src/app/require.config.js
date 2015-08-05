@@ -14,7 +14,8 @@ var require = {
         "hasher": "bower_modules/hasher/dist/js/hasher.min",
         "crossroads": "bower_modules/crossroads/dist/crossroads.min",
         "datatables": "bower_modules/DataTables/media/js/jquery.dataTables",
-        "jquery-confirm": "bower_modules/jquery-confirm2/js/jquery-confirm"
+        "jquery-confirm": "bower_modules/jquery-confirm2/js/jquery-confirm",
+        "owlcarousel": "bower_modules/owl-carousel2/dist/owl.carousel"
     },
     shim: {
         "bootstrap": {
@@ -24,6 +25,9 @@ var require = {
             deps: ["jquery"]
         },
         "jquery-confirm": {
+            deps: ["jquery"]
+        },
+        "owlcarousel": {
             deps: ["jquery"]
         }
     }
