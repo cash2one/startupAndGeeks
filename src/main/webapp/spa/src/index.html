@@ -31,7 +31,11 @@
 </head>
 
 <body>
+    <site-bar params="route: route"></site-bar>
+    <nav-bar params="route: route"></nav-bar>
+    <site-header params="route: route"></site-header>
     <div id="page" data-bind="component: { name: route().page, params: route }"></div>
+    <site-footer params="route: route"></site-footer>
 </body>
 
 </html>

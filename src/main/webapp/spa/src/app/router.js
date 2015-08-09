@@ -1,4 +1,8 @@
-define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
+define([
+    "knockout",
+    "crossroads",
+    "hasher"
+], function(ko, crossroads, hasher) {
 
     function Router(config) {
 
@@ -40,7 +44,13 @@ define(["knockout", "crossroads", "hasher"], function(ko, crossroads, hasher) {
             params: {
                 page: 'about-page'
             }
+        }, {
+            url: 'apply',
+            params: {
+                page: 'road-show-apply'
+            }
         }]
     });
+
 });
 

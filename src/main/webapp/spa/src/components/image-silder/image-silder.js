@@ -1,4 +1,9 @@
-define(['knockout', "jquery", 'text!./image-silder.html', "owlcarousel"], function(ko, $, templateMarkup) {
+define([
+    'knockout',
+    "jquery",
+    'text!./image-silder.html',
+    "owlcarousel"
+], function(ko, $, templateMarkup) {
 
     var images = [
         "imgs/3.jpg",
@@ -41,7 +46,7 @@ define(['knockout', "jquery", 'text!./image-silder.html', "owlcarousel"], functi
     return {
         viewModel: ImageSilder,
         template: templateMarkup,
-        synchronous: true
+        // synchronous: true
     };
 
 });

@@ -10,6 +10,7 @@ var require = {
         "knockout-mapping": "bower_modules/bower-knockout-mapping/dist/knockout.mapping",
         "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections",
         "knockout-validation": "bower_modules/knockout-validation/dist/knockout.validation",
+        "knockout-postbox": "bower_modules/knockout-postbox/build/knockout-postbox",
         "signals": "bower_modules/js-signals/dist/signals.min",
         "hasher": "bower_modules/hasher/dist/js/hasher.min",
         "crossroads": "bower_modules/crossroads/dist/crossroads.min",

@@ -1,4 +1,14 @@
-define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-mapping', 'knockout-projections', 'common/Settings', 'jquery-confirm'], function($, ko, router) {
+define([
+    'jquery',
+    'knockout',
+    './router',
+    'bootstrap',
+    'knockout-mapping',
+    'knockout-projections',
+    'knockout-postbox',
+    'common/Settings',
+    'jquery-confirm'
+], function($, ko, router) {
 
     // ... or for template-only components, you can just point to a .html file directly:
 
@@ -32,9 +42,17 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-mapping', 'knoc
         require: 'components/register/register'
     });
 
-    ko.components.register('site-bar', { require: 'components/site-bar/site-bar' });
+    ko.components.register('site-bar', {
+        require: 'components/site-bar/site-bar'
+    });
 
-    ko.components.register('image-silder', { require: 'components/image-silder/image-silder' });
+    ko.components.register('image-silder', {
+        require: 'components/image-silder/image-silder'
+    });
+
+    ko.components.register('road-show-apply', {
+        require: 'components/road-show-apply/road-show-apply'
+    });
 
     // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
@@ -42,5 +60,6 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-mapping', 'knoc
     ko.applyBindings({
         route: router.currentRoute
     });
+
 });
 
