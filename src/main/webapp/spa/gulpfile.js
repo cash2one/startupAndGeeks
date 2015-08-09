@@ -129,7 +129,7 @@ gulp.task('watchless', function() {
 gulp.task('webserver', function() {
     gulp.src('./src/')
         .pipe(server({
-            open: true,
+            // open: true,
             port: 9000
         }));
 });

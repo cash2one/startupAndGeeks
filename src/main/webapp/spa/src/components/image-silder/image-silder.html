@@ -1,7 +1,8 @@
 <div class="image-silder" data-bind="template: { afterRender: initOwl }">
     <div class="fadeOut owl-carousel" data-bind=" foreach: imageList">
         <div class="item">
-            <img src="" alt="" data-bind="attr: { src: $data }">
+            <!-- <img src="" alt="" data-bind="attr: { src: $data }"> -->
+            <div class="imgs" data-bind="style: { backgroundImage: 'url(\''+ $data +'\')' }"></div>
         </div>
     </div>
 </div>

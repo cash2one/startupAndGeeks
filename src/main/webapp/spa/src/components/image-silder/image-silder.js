@@ -21,9 +21,14 @@ define(['knockout', "jquery", 'text!./image-silder.html', "owlcarousel"], functi
         $('.owl-carousel').owlCarousel({
             items: 1,
             animateOut: 'fadeOut',
+            navText: ['<span class="glyphicon glyphicon-menu-left"></span>', '<span class="glyphicon glyphicon-menu-right"></span>'],
+            dots: true,
             loop: true,
             margin: 10,
-            nav: true
+            nav: true,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true
         });
     };
     // This runs when the component is torn down. Put here any logic necessary to clean up,
