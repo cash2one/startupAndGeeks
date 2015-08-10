@@ -3208,3 +3208,12 @@ li {
 .road-show-apply {
   margin-top: 20px;
 }
+.road-show-apply .save {
+  margin-right: 10px;
+}
+.road-show-apply .creatorForm > fieldset {
+  border: 1px solid #eee;
+}
+.road-show-apply .creatorForm .form-group .control-label {
+  text-align: left;
+}
