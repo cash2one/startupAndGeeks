@@ -1,101 +1,103 @@
 <div class="road-show-apply">
     <div class="container">
         <div class="col-xs-8 col-xs-offset-2">
-            <form action="" method="POST" role="form">
-                <legend>路演申请</legend>
-                <div class="form-group">
-                    <label for="">项目名称</label>
-                    <input type="text" class="form-control" id="" placeholder="Input field">
-                </div>
-                <div class="form-group">
-                    <label for="">一句话介绍</label>
-                    <input type="text" class="form-control" id="" placeholder="Input field">
-                </div>
-                <div class="form-group">
-                    <label for="">项目类别</label>
-                    <select name="" id="input" class="form-control" required="required">
-                        <option value="">option-1</option>
-                        <option value="">option-2</option>
-                        <option value="">option-3</option>
-                        <option value="">option-4</option>
-                        <option value="">option-5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="">所在城市</label>
-                    <div class="row clearfix">
-                        <div class="col-xs-6">
-                            <input type="text" class="form-control" id="" placeholder="Input field">
-                        </div>
-                        <div class="col-xs-6">
-                            <input type="text" class="form-control" id="" placeholder="Input field">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="">宣传视频</label>
-                    <input type="text" class="form-control" id="" placeholder="Input field">
-                </div>
-                <div class="form-group">
-                    <label for="">商业计划书</label>
-                    <input type="text" class="form-control" id="" placeholder="Input field">
-                </div>
-                <div class="form-group">
-                    <label for="">路演PPT</label>
-                    <input type="text" class="form-control" id="" placeholder="Input field">
-                </div>
-                <div class="form-group">
-                    <label for="">融资计划</label>
-                    <input type="text" class="form-control" id="" placeholder="Input field">
-                </div>
-                <div class="form-group">
-                    <label for="">创始人</label>
-                </div>
-            </form>
-            <form class="form-horizontal creatorForm">
-                <fieldset>
+            <legend class="clearfix">路演申请<span class="glyphicon pull-right" data-bind="click: collapseBasic, css: basicInfoToggle() ? 'glyphicon-menu-up' : 'glyphicon-menu-down'"></span></legend>
+            <div data-bind="slideVisible: basicInfoToggle">
+                <form action="" method="POST" role="form">
                     <div class="form-group">
-                        <label for="" class="col-xs-4 control-label">姓名</label>
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control">
+                        <label for="">项目名称</label>
+                        <input type="text" class="form-control" id="" placeholder="Input field">
+                    </div>
+                    <div class="form-group">
+                        <label for="">一句话介绍</label>
+                        <input type="text" class="form-control" id="" placeholder="Input field">
+                    </div>
+                    <div class="form-group">
+                        <label for="">项目类别</label>
+                        <select name="" id="input" class="form-control" required="required">
+                            <option value="">option-1</option>
+                            <option value="">option-2</option>
+                            <option value="">option-3</option>
+                            <option value="">option-4</option>
+                            <option value="">option-5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">所在城市</label>
+                        <div class="row clearfix">
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" id="" placeholder="Input field">
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" id="" placeholder="Input field">
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-xs-4 control-label">电话</label>
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control">
-                        </div>
+                        <label for="">宣传视频</label>
+                        <input type="text" class="form-control" id="" placeholder="Input field">
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-xs-4 control-label">职位</label>
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control">
-                        </div>
+                        <label for="">商业计划书</label>
+                        <input type="text" class="form-control" id="" placeholder="Input field">
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-xs-4 control-label">能力</label>
-                        <div class="col-xs-8">
-                            <select name="" id="input" class="form-control" required="required">
-                                <option value=""></option>
-                            </select>
-                        </div>
+                        <label for="">路演PPT</label>
+                        <input type="text" class="form-control" id="" placeholder="Input field">
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-xs-4 control-label">简介</label>
-                        <div class="col-xs-8">
-                            <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
-                        </div>
+                        <label for="">融资计划</label>
+                        <input type="text" class="form-control" id="" placeholder="Input field">
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-xs-4 control-label">创业经历</label>
-                        <div class="col-xs-8">
-                            <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
-                        </div>
+                        <label for="">创始人</label>
                     </div>
-                </fieldset>
-            </form>
-            <legend>其他信息</legend>
-            <form action="" method="POST" role="form" class="">
+                </form>
+                <form class="form-horizontal creatorForm">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="" class="col-xs-4 control-label">姓名</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-xs-4 control-label">电话</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-xs-4 control-label">职位</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-xs-4 control-label">能力</label>
+                            <div class="col-xs-8">
+                                <select name="" id="input" class="form-control" required="required">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-xs-4 control-label">简介</label>
+                            <div class="col-xs-8">
+                                <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-xs-4 control-label">创业经历</label>
+                            <div class="col-xs-8">
+                                <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <legend class="clearfix">其他信息<span class="glyphicon pull-right" data-bind="click: collapseOther, css: otherInfoToggle() ? 'glyphicon-menu-up' : 'glyphicon-menu-down'"></span></legend>
+            <form action="" method="POST" role="form" class="" data-bind="slideVisible: otherInfoToggle">
                 <div class="form-group">
                     <label for="">项目简述</label>
                     <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>

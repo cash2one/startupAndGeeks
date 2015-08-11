@@ -7,6 +7,7 @@ define([
     'knockout-projections',
     'knockout-postbox',
     'common/Settings',
+    'common/Util',
     'jquery-confirm'
 ], function($, ko, router) {
 

@@ -3205,7 +3205,7 @@ li {
   width: 100%;
   height: 500px;
 }
-.road-show-apply {
+.road-show-apply legend {
   margin-top: 20px;
 }
 .road-show-apply .save {
@@ -3213,6 +3213,7 @@ li {
 }
 .road-show-apply .creatorForm > fieldset {
   border: 1px solid #eee;
+  padding: 20px;
 }
 .road-show-apply .creatorForm .form-group .control-label {
   text-align: left;
