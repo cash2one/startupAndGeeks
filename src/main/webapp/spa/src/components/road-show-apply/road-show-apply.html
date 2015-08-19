@@ -6,11 +6,11 @@
                 <form action="" method="POST" role="form">
                     <div class="form-group">
                         <label for="">项目名称</label>
-                        <input type="text" class="form-control" id="" placeholder="Input field">
+                        <input type="text" class="form-control" id="" placeholder="请输入...">
                     </div>
                     <div class="form-group">
                         <label for="">一句话介绍</label>
-                        <input type="text" class="form-control" id="" placeholder="Input field">
+                        <input type="text" class="form-control" id="" placeholder="请输入...">
                     </div>
                     <div class="form-group">
                         <label for="">项目类别</label>
@@ -26,28 +26,46 @@
                         <label for="">所在城市</label>
                         <div class="row clearfix">
                             <div class="col-xs-6">
-                                <input type="text" class="form-control" id="" placeholder="Input field">
+                                <input type="text" class="form-control" placeholder="省／市">
                             </div>
                             <div class="col-xs-6">
-                                <input type="text" class="form-control" id="" placeholder="Input field">
+                                <input type="text" class="form-control" placeholder="市／区">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="">宣传视频</label>
-                        <input type="text" class="form-control" id="" placeholder="Input field">
+                        <input type="text" class="form-control" id="" placeholder="请输入链接地址...">
                     </div>
                     <div class="form-group">
                         <label for="">商业计划书</label>
-                        <input type="text" class="form-control" id="" placeholder="Input field">
+                        <div class="row clearfix file-uploader">
+                            <div class="col-xs-6">
+                                <input type="file" class="form-control file" name="proposal" data-url="/upload/document">
+                                <input type="hidden" class="form-control url">
+                                <input type="text" class="form-control name" placeholder="请选择文件...">
+                            </div>
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-success upload">上传计划书</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">路演PPT</label>
-                        <input type="text" class="form-control" id="" placeholder="Input field">
+                        <div class="row clearfix file-uploader">
+                            <div class="col-xs-6">
+                                <input type="file" class="form-control file" name="ppt" data-url="/upload/document">
+                                <input type="hidden" class="form-control url">
+                                <input type="text" class="form-control name" placeholder="请选择文件...">
+                            </div>
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-success upload">上传路演PPT</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">融资计划</label>
-                        <input type="text" class="form-control" id="" placeholder="Input field">
+                        <input type="text" class="form-control" id="" placeholder="请输入...">
                     </div>
                     <div class="form-group">
                         <label for="">创始人</label>
@@ -58,19 +76,19 @@
                         <div class="form-group">
                             <label for="" class="col-xs-4 control-label">姓名</label>
                             <div class="col-xs-8">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" placeholder="请输入...">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-4 control-label">电话</label>
                             <div class="col-xs-8">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" placeholder="请输入...">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-4 control-label">职位</label>
                             <div class="col-xs-8">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" placeholder="请输入...">
                             </div>
                         </div>
                         <div class="form-group">
@@ -84,13 +102,13 @@
                         <div class="form-group">
                             <label for="" class="col-xs-4 control-label">简介</label>
                             <div class="col-xs-8">
-                                <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                                <textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="请填写..."></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-4 control-label">创业经历</label>
                             <div class="col-xs-8">
-                                <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                                <textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="请填写..."></textarea>
                             </div>
                         </div>
                     </fieldset>
@@ -100,31 +118,40 @@
             <form action="" method="POST" role="form" class="" data-bind="slideVisible: otherInfoToggle">
                 <div class="form-group">
                     <label for="">项目简述</label>
-                    <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                    <textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="请填写..."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="">项目logo</label>
-                    <input type="text" class="form-control" id="" placeholder="Input field">
+                    <div class="row clearfix file-uploader">
+                        <div class="col-xs-6">
+                            <input type="file" class="form-control file" name="ppt" data-url="/upload/document">
+                            <input type="hidden" class="form-control url">
+                            <input type="text" class="form-control name" placeholder="请选择文件...">
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-success upload">上传LOGO</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="">市场分析</label>
-                    <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                    <textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="请填写..."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="">需求分析</label>
-                    <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                    <textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="请填写..."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="">盈利模式</label>
-                    <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                    <textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="请填写..."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="">发展规划</label>
-                    <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                    <textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="请填写..."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="">其他</label>
-                    <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
+                    <textarea name="" id="input" class="form-control" rows="3" required="required" placeholder="请填写..."></textarea>
                 </div>
                 <button type="submit" class="btn btn-success col-xs-2 save">提交</button>
                 <button type="reset" class="btn btn-default col-xs-2 reset">清空</button>

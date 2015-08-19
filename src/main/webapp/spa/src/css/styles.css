@@ -3218,3 +3218,11 @@ li {
 .road-show-apply .creatorForm .form-group .control-label {
   text-align: left;
 }
+.file-uploader {
+  position: relative;
+}
+.file-uploader .file {
+  position: absolute;
+  visibility: hidden;
+  z-index: 0;
+}
