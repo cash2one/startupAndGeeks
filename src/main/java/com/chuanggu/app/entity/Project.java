@@ -22,7 +22,9 @@ public class Project {
 
     private String tranferSharePercent;
 
-    private Date applyDate;
+    private Date applyFrom;
+    
+    private Date applyTo;
 
     private Date confirmDate;
 
@@ -106,12 +108,20 @@ public class Project {
 		this.tranferSharePercent = tranferSharePercent;
 	}
 
-	public Date getApplyDate() {
-		return applyDate;
+	public Date getApplyFrom() {
+		return applyFrom;
 	}
 
-	public void setApplyDate(Date applyDate) {
-		this.applyDate = applyDate;
+	public void setApplyFrom(Date applyFrom) {
+		this.applyFrom = applyFrom;
+	}
+
+	public Date getApplyTo() {
+		return applyTo;
+	}
+
+	public void setApplyTo(Date applyTo) {
+		this.applyTo = applyTo;
 	}
 
 	public Date getConfirmDate() {

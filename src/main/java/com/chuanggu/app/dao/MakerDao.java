@@ -1,5 +1,8 @@
 package com.chuanggu.app.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.chuanggu.app.entity.Maker;
 
 public interface MakerDao {
@@ -16,4 +19,10 @@ public interface MakerDao {
     int updateByPrimaryKeyWithBLOBs(Maker record);
 
     int updateByPrimaryKey(Maker record);
+    /*
+     * myself
+     */
+    List<Maker> getMakerList(Map<String, String> param);
+    Maker getMakerDetail(String id);
 }
+   

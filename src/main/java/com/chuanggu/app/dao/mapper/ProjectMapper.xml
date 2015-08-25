@@ -11,10 +11,11 @@
     <result column="business_plan_url" property="businessPlanUrl" jdbcType="VARCHAR" />
     <result column="financing_target" property="financeTarget" jdbcType="VARCHAR" />
     <result column="tranfer_share_percent" property="tranferSharePercent" jdbcType="VARCHAR" />
-    <result column="apply_date" property="applyDate" jdbcType="TIMESTAMP" />
-    <result column="confirm_date" property="confirmDate" jdbcType="TIMESTAMP" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="apply_from" property="applyFrom" jdbcType="DATE" />
+    <result column="apply_to" property="applyTo" jdbcType="DATE" />
+    <result column="confirm_date" property="confirmDate" jdbcType="DATE" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="update_time" property="updateTime" jdbcType="DATE" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="VARCHAR" />
   </resultMap>
@@ -39,7 +40,7 @@
     insert into project (project_id, project_slogon, 
       project_name, locate_city, conduct_url, 
       project_logo_url, business_plan_url, financing_target, 
-      tranfer_share_percent, apply_date, confirm_date, 
+      tranfer_share_percent, apply_from,apply_to, confirm_date, 
       create_time, update_time, user_id, 
       state, project_desc, market_analysis, 
       reqiuirement_position, profit_pattern, 
@@ -47,15 +48,15 @@
     values #{projectId,jdbcType=VARCHAR}, #{projectSlogan,jdbcType=VARCHAR}, 
       #{projectName,jdbcType=VARCHAR}, #{locateCity,jdbcType=VARCHAR}, #{conductUrl,jdbcType=VARCHAR}, 
       #{projectLogoUrl,jdbcType=VARCHAR}, #{businessPlanUrl,jdbcType=VARCHAR}, #{financeTarget,jdbcType=VARCHAR}, 
-      #{tranferSharePercent,jdbcType=VARCHAR}, #{applyDate,jdbcType=TIMESTAMP}, #{confirmDate,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=VARCHAR}, 
+      #{tranferSharePercent,jdbcType=VARCHAR}, #{applyFrom,jdbcType=DATE},#{applyTo,jdbcType=DATE}, #{confirmDate,jdbcType=DATE}, 
+      #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{userId,jdbcType=VARCHAR}, 
       #{state,jdbcType=VARCHAR}, #{projectDesc,jdbcType=LONGVARCHAR}, #{marketAnalysis,jdbcType=LONGVARCHAR}, 
       #{reqiuirementPosition,jdbcType=LONGVARCHAR}, #{profitPattern,jdbcType=LONGVARCHAR}, 
       #{developPlan,jdbcType=LONGVARCHAR}, #{extra,jdbcType=LONGVARCHAR})
   </insert>
   
   <!-- 获取我名下的所有项目列表 -->
-  <select id="listAllMyProject" resultType="projectDto">
+  <select id="getProjectList" resultType="projectDto">
 		SELECT project_id,project_name,project_logo_url,financing_target,state
 		FROM project
 		WHERE user_id = #{userId}
@@ -68,10 +69,10 @@
   </select>
   <!-- 申请项目路演时间 -->
   <update id="applyRoadShowDate">
-    update project set apply_date =#{applyDate} where project_id = #{projectId}
+    update project set apply_from =#{applyFrom},apply_to =#{applyTo} where project_id = #{projectId}
   </update>
   <!-- 审核确认项目路演时间 -->
-  <update id="confirmRoadShowDate">
+  <update id="approveRoadShow">
     update project set confirm_date =#{confirmDate} where project_id = #{projectId}
   </update>
   <!-- 对自动生成的配置文件自定修改 -->

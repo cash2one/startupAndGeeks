@@ -11,6 +11,8 @@ public class ProjectDto {
 	private String projectLogoUrl;
 
 	private String financeTarget;
+	
+	private String state;
 
 	public String getProjectId() {
 		return projectId;
@@ -43,8 +45,6 @@ public class ProjectDto {
 	public void setFinanceTarget(String financeTarget) {
 		this.financeTarget = financeTarget;
 	}
-
-	private String state;
 
 	public String getState() {
 		return ItemState.valueOf(state).getName();

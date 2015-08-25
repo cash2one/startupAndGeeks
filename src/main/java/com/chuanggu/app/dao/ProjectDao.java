@@ -23,11 +23,11 @@ public interface ProjectDao {
     /**
      * 申请路演时间
      */
-    int applyRoadShowDate(Date applyDate,String projectId);
+    void applyRoadShowDate(String projectId,Date applyFrom,Date applyTo);
     /**
      * 审核并确认路演时间的具体时间
      */
-    int confirmRoadShowDate(Date applyDate,String projectId);
+    void approveRoadShow(String projectId,Date confirmDate);
     /**
      * 获取路演项目的详细信息
      */
@@ -39,5 +39,5 @@ public interface ProjectDao {
     /**
      * 获取个人名下所有项目
      */
-    List<ProjectDto> listAllMyProject(String userId);
+    List<ProjectDto> getProjectList(String userId);
 }

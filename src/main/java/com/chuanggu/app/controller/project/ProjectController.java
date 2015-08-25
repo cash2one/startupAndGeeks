@@ -21,8 +21,34 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectService ps;
+	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public @ResponseBody ResponseMessage addProject(@Valid @RequestBody ProjectWithBLOBs project){
+		ps.addProject(project);
+		return ResponseMsgUtil.getDefaultSuccessMsg();
+	}
+	
+	@RequestMapping(value="/list", method = RequestMethod.GET)
+	public @ResponseBody ResponseMessage listProject(@Valid @RequestBody ProjectWithBLOBs project){
+		ps.addProject(project);
+		return ResponseMsgUtil.getDefaultSuccessMsg();
+	}
+	
+	@RequestMapping(value="/detail", method = RequestMethod.GET)
+	public @ResponseBody ResponseMessage detailProject(@Valid @RequestBody ProjectWithBLOBs project){
+		ps.addProject(project);
+		return ResponseMsgUtil.getDefaultSuccessMsg();
+	}
+	
+	@RequestMapping(value="/apply", method = RequestMethod.POST)
+	public @ResponseBody ResponseMessage applyRoadShow(@Valid @RequestBody ProjectWithBLOBs project){
+		ps.addProject(project);
+		return ResponseMsgUtil.getDefaultSuccessMsg();
+	}
+	
+	
+	@RequestMapping(value="/approve", method = RequestMethod.POST)
+	public @ResponseBody ResponseMessage approveRoadShow(@Valid @RequestBody ProjectWithBLOBs project){
 		ps.addProject(project);
 		return ResponseMsgUtil.getDefaultSuccessMsg();
 	}

@@ -1,6 +1,6 @@
 package com.chuanggu.app.entity;
 
-public class smart {
+public class Smart {
     private String smart_id;
 
     private String position;
