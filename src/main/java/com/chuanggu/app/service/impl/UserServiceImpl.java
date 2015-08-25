@@ -44,7 +44,6 @@ public class UserServiceImpl implements UserService{
 		return false;
 	}
 
-	@Override
 	public List<Smart> getSmartList(Map<String, String> param) {
 		// TODO Auto-generated method stub
 		return smartDao.getSmartList(param);

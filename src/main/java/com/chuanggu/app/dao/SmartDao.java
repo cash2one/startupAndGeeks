@@ -24,7 +24,6 @@ public interface SmartDao {
     /*
      * myself
      */
-    
     List<Smart> getSmartList(Map<String, String> param);
     
     Smart getSmartDetail(String id);

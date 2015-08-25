@@ -10,6 +10,8 @@ public class Investor {
     private String education;
 
     private String phone;
+    
+    private String belong;
 
     private String invest_area;
 

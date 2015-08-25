@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.chuanggu.app.dao.smartMapper" >
-  <resultMap id="BaseResultMap" type="com.chuanggu.app.entity.smart" >
+  <resultMap id="BaseResultMap" type="com.chuanggu.app.entity.Smart" >
     <id column="smart_id" property="smart_id" jdbcType="VARCHAR" />
     <result column="position" property="position" jdbcType="VARCHAR" />
     <result column="introduction" property="introduction" jdbcType="VARCHAR" />
@@ -156,4 +156,17 @@
       company = #{company,jdbcType=VARCHAR}
     where smart_id = #{smart_id,jdbcType=VARCHAR}
   </update>
+  
+  
+  
+  
+  <select id="getSmartList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select smart_id, position,industry
+    from smart
+    where smart_id = #{smart_id,jdbcType=VARCHAR}
+  </select>
+  
+  
+  
+  
 </mapper>
